@@ -18,9 +18,8 @@ namespace Own.Trad.WebApi.Controllers
     /// </remarks>
     /// </summary>
 #pragma warning restore CS1570 // XML comment has badly formed XML
-    [ApiController]
     [Authorize]
-    [Route("api")]
+    [ApiController]
     public class ApiBaseController : ControllerBase
     {
         protected IActionResult Problem(List<OError> errors)

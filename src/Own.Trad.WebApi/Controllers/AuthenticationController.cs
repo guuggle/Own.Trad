@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -9,7 +10,7 @@ using Own.Trad.WebApi.Contracts.Authentication;
 namespace Own.Trad.WebApi.Controllers
 {
     [AllowAnonymous]
-    [Route("auth")]
+    [Route("api/auth")]
     public class AuthenticationController : ApiBaseController
     {
         private readonly IAuthService _service;
@@ -37,7 +38,6 @@ namespace Own.Trad.WebApi.Controllers
         public async Task<IActionResult> Login(LoginRequest request)
         {
             var authResult = await _service.Login(request.Email, request.Password);
-
             return authResult.Match(
                 authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
                 errors => Problem(errors)

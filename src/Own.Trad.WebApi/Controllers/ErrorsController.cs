@@ -5,9 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Diagnostics;
 using Own.Trad.Framework.OResult;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Own.Trad.WebApi.Controllers
 {
+    [AllowAnonymous]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorsController : ApiBaseController
     {
         private readonly ILogger<ErrorsController> _logger;
@@ -17,7 +20,6 @@ namespace Own.Trad.WebApi.Controllers
             _logger = logger;
         }
 
-        [ApiExplorerSettings(IgnoreApi = true)]
         [Route("/error")]
         public IActionResult Error()
         {
